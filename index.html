@@ -4,9 +4,17 @@
     <meta charset="utf-8">
     <title>PWA NEWS</title>
 
+    <link rel="apple-touch-icon" sizes="180x180" href="image/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="image/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="image/favicon-16x16.png">
+    <link rel="mask-icon" href="image/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
           integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="manifest" href="manifest.json">
 </head>
 <body>
 <div class="container">
@@ -26,6 +34,12 @@
                 aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
+        <button type="button" aria-label="search">
+            
+        </button>
+
+
         <div class="collapse navbar-collapse justify-content-md-center" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li id="headline" class="nav-item active"><a class="nav-link" href="#">Headline</a></li>
@@ -72,6 +86,15 @@
 <script src="library/moment.min.js"></script>
 
 <script src="js/api.js"></script>
+<script src="js/install-banner.js"></script>
+
+<script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+                .register('sw-pws-news.js')
+                .then(function() { console.log('Service Worker Registered'); });
+    }
+</script>
 
 </body>
 </html>
