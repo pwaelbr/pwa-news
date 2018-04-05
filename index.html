@@ -73,5 +73,16 @@
 
 <script src="js/api.js"></script>
 
+<script>
+    if('serviceWorker' in navigator){
+        navigator.serviceWorker.register('sw-pwa-news.js')
+        .then(function(registration){
+            console.log('Registrando com scope:', registration)
+        }).catch(function(error){
+            console.log(error);
+        });
+    }
+</script>
+
 </body>
 </html>
