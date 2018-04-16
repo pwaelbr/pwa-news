@@ -39,6 +39,27 @@
         console.log("Your device don't support");
     }
 
+    var watchId;
+
+    function appendLocation(location, verb) {
+        verb = verb || 'updated';
+        var newLocation = document.createElement('p');
+        newLocation.innerHTML = 'Location ' + verb + ': <a href="https://maps.google.com/maps?&z=15&q=' + location.coords.latitude + '+' + location.coords.longitude + '&ll=' + location.coords.latitude + '+' + location.coords.longitude + '" target="_blank">' + location.coords.latitude + ', ' + location.coords.longitude + '</a>';
+        console.log(newLocation);
+        return (newLocation);
+    }
+
+    if ('geolocation' in navigator) {
+        document.getElementById('btn-locale').addEventListener('click', function () {
+          navigator.geolocation.getCurrentPosition(function (location) {
+            console.log(appendLocation(location, 'fetched'));
+          });
+          watchId = navigator.geolocation.watchPosition(appendLocation);
+        });
+      } else {
+        target.innerText = 'Geolocation API not supported.';
+      }
+
     function onUpdateDeviceLight(event){
         var colorPart = Math.min(255, event.value).toFixed(0);
         document.getElementById("body").style.backgroundColor = 
