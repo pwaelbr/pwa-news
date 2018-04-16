@@ -1,22 +1,25 @@
-(function(){
-'use strict';
+(function () {
+    'use strict';
 
-self.addEventListener('notificationClick', function(event){
-    setTimeout(function(){
-        self.Notification.close();
-    }, 2000);
+    ///PUSH
 
-    event.waitUntil(
-        clients.openWindow('https://www.google.com')
-    );
-});
+    self.addEventListener('notificationclick', function (event) {
+        event.notification.close();
 
-    self.addEventListener('push', function(event){
+        event.waitUntil(
+            clients.openWindow('http://127.0.0.1:8887/')
+        );
+    });
+
+    self.addEventListener('push', function (event) {
+        console.log(event);
         var options = {
-            body: 'Push notification'
+            body: event.data.text(),
+            icon: 'image/apple-touch-icon.png',
+            badge: 'images/badge.png'
         };
         event.waitUntil(
-        self.registration.showNotification("Novas noticias", options)
+            self.registration.showNotification("Novas noticias", options)
         );
     });
 })();

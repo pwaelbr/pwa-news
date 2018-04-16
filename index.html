@@ -79,18 +79,11 @@
 <!--<script src="js/install-banner.js"></script>-->
 
 <script>
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker
-                .register('sw-pws-news.js')
-                .then(function() { console.log('Service Worker Registered'); });
-    }
-</script>
-
-<script>
-    if('serviceWorker' in navigator){
+    if('serviceWorker' in navigator  && 'PushManager' in window){
         navigator.serviceWorker.register('sw-pwa-news.js')
         .then(function(registration){
-            console.log('Registrando com scope:', registration)
+            console.log('Registrando com scope:', registration);
+            swPush = registration;
         }).catch(function(error){
             console.log(error);
         });

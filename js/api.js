@@ -27,36 +27,16 @@
         }
             btnAlert.click(function () {
                 
-                    Notification.requestPermission(function(perm){
-                        permissionNotification = perm;
-                    });
+                Notification.requestPermission(function(perm){
+                    permissionNotification = perm;
+                });
             });
-
-        
-
     }
-
-    window.onblur = onblur();
-
-    function onblur(){
-        console.log('exit');
-        setTimeout(function(){
-            navigator.serviceWorker.getRegistration()
-            .then(function (reg){
-                var options = {
-                    body: 'Lula foi...',
-                    //icon:'image/android-chrome-192x192.png',
-                    //badge:'image/android-chrome-192x192.png'
-                };
-                reg.showNotification("Novidades",options);
-            });
-        }, 3000);
-    };
 
     if("ondevicelight" in window){
         window.addEventListener("deviceLight", onUpdateDeviceLight);
     }else{
-        alert("Luz baixa");
+        console.log("Your device don't support");
     }
 
     function onUpdateDeviceLight(event){
