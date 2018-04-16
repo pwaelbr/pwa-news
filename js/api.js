@@ -60,6 +60,14 @@
         target.innerText = 'Geolocation API not supported.';
       }
 
+    var titlePage = document.getElementById('titlePage');
+    handleStateChange();
+    console.log("TESTE");
+    function handleStateChange() {
+        var state = navigator.onLine ? 'online' : 'offline';
+        titlePage.innerHTML += " ["+ state + ']';
+    }
+
     function onUpdateDeviceLight(event){
         var colorPart = Math.min(255, event.value).toFixed(0);
         document.getElementById("body").style.backgroundColor = 
