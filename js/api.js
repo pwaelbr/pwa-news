@@ -11,6 +11,60 @@
 
     getNews();
 
+    //notificacao
+
+    var permissionNotification = false;
+    var btnAlert = $("#btn-alert");
+
+    if('Notification' in window) { //verifica se existe
+        permissionNotification = Notification.permission; // verifica se o usuario tem permissao
+        console.log(permissionNotification);
+        if (permissionNotification==='default'){
+            btnAlert.show();
+        }
+        else{
+            btnAlert.hide();
+        }
+            btnAlert.click(function () {
+                
+                    Notification.requestPermission(function(perm){
+                        permissionNotification = perm;
+                    });
+            });
+
+        
+
+    }
+
+    window.onblur = onblur();
+
+    function onblur(){
+        console.log('exit');
+        setTimeout(function(){
+            navigator.serviceWorker.getRegistration()
+            .then(function (reg){
+                var options = {
+                    body: 'Lula foi...',
+                    //icon:'image/android-chrome-192x192.png',
+                    //badge:'image/android-chrome-192x192.png'
+                };
+                reg.showNotification("Novidades",options);
+            });
+        }, 3000);
+    };
+
+    if("ondevicelight" in window){
+        window.addEventListener("deviceLight", onUpdateDeviceLight);
+    }else{
+        alert("Luz baixa");
+    }
+
+    function onUpdateDeviceLight(event){
+        var colorPart = Math.min(255, event.value).toFixed(0);
+        document.getElementById("body").style.backgroundColor = 
+        "rgb(" + colorPart + ", " + colorPart + ", " + colorPart + ")";
+    }
+
     function getNews() {
         var url = API + ENDPOINT_HEADLINES + 'country=br&' + API_KEY + getCategory();
         $.get(url, success);
