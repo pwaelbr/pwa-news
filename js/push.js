@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    
+    var swPush;
     const applicationServerPublicKey = 'BH9adO8NxsP9AlP4L7T_qkabd1SVLJ4wznboOZ4t4pf0DfvoODcQ_P4ywE-wEJqJAJvXwJyHMONs8Esqx_ARfd8';
     //AcVDGtJMIMH98crbYBvUoukVfur-M_MWpTU_uttj2kw
 
