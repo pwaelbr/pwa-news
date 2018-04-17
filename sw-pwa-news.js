@@ -4,8 +4,8 @@
     var CACHE_SHELL='pwa-news-shell-v1';
     var FILES_SHELL=[
         '/',
-        '/css/core.css',,
-        '/css/main.css',,
+        '/css/core.css',
+        '/css/main.css',
         '/image/placeholder-image.png',
         '/js/api.js',
         '/js/install-banner.js',
