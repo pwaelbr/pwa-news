@@ -24,7 +24,6 @@
         }
         return outputArray;
     }
-    
     if('serviceWorker' in navigator && 'PushManager' in window){
         window.addEventListener('load', function(){
             navigator.serviceWorker.register('sw-pwa-news.js').then(function(swRegister){

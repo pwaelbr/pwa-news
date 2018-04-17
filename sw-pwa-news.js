@@ -8,6 +8,8 @@
         '/css/main.css',,
         '/image/placeholder-image.png',
         '/js/api.js',
+        '/js/install-banner.js',
+        '/js/push.js',
         '/library/jquery-3.3.1.min.js',
         '/library/moment.min.js'
     ];

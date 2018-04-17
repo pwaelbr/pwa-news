@@ -43,9 +43,8 @@
 
     function appendLocation(location, verb) {
         verb = verb || 'updated';
-        var newLocation = document.createElement('p');
+        var newLocation = document.getElementById('yourLocation');
         newLocation.innerHTML = 'Location ' + verb + ': <a href="https://maps.google.com/maps?&z=15&q=' + location.coords.latitude + '+' + location.coords.longitude + '&ll=' + location.coords.latitude + '+' + location.coords.longitude + '" target="_blank">' + location.coords.latitude + ', ' + location.coords.longitude + '</a>';
-        console.log(newLocation);
         return (newLocation);
     }
 
@@ -61,11 +60,13 @@
       }
 
     var titlePage = document.getElementById('titlePage');
-    handleStateChange();
-    console.log("TESTE");
+    window.addEventListener('online', handleStateChange);
+    window.addEventListener('offline', handleStateChange);
     function handleStateChange() {
         var state = navigator.onLine ? 'online' : 'offline';
-        titlePage.innerHTML += " ["+ state + ']';
+        if(state=="offline")
+            titlePage.innerHTML = "PWA News [you are offline]";
+        else titlePage.innerHTML = "PWA News";
     }
 
     function onUpdateDeviceLight(event){
