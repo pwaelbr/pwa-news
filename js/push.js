@@ -58,6 +58,8 @@
             applicationServerKey: applicationServerKey
           }).then(function (subscriptin) {
             console.log(JSON.stringify(subscriptin));
+        }).catch(function(err){
+            console.log('REGISTER USER: '+err);
         });
     }
 
